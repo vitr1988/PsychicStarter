@@ -1,6 +1,7 @@
 package ru.synergyitacademy;
 
 import ru.synergyitacademy.util.InputChecker;
+import ru.synergyitacademy.util.ResourceUtil;
 
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -25,8 +26,8 @@ public class Launcher {
      * Main method which starts this program
      * @param args      input parameters which can be defined in command line during running
      */
-    public static void main(String[] args) {
-        System.out.println("Please choose the number between 1 and 5 and print it:");
+    public static void main(String[] args) throws Exception {
+        System.out.println(ResourceUtil.getText("startTitle.alt"));
         int attempts = 1; // the first attempt
         final int computerDigit = new Random().nextInt(MAX_BOUND + 1);
         Scanner scanner = new Scanner(System.in);
@@ -42,17 +43,17 @@ public class Launcher {
                     }
                 }
                 else {
-                    System.out.printf("You shouldn't print the digit which is less than %d and more than %d\n", MIN_BOUND, MAX_BOUND);
+                    System.out.printf(ResourceUtil.getText("input.incorrectIntValue.alt"), MIN_BOUND, MAX_BOUND);
                 }
             }
             catch (InputMismatchException ime) {
-                System.out.printf("You shouldn't print anything. That's allowed only the digits which are less than %d and more than %d\n", MIN_BOUND, MAX_BOUND);
+                System.out.printf(ResourceUtil.getText("input.prohibitedValue.alt"), MIN_BOUND, MAX_BOUND);
                 scanner.next(); // to make it possible for ask new input
             }
             attempts++;
-            System.out.println("Let's try again");
+            System.out.println(ResourceUtil.getText("tryAgain.alt"));
         }
-        System.out.printf("You are lucky today. You need only %d attempts to guess this digit %d", attempts, computerDigit);
+        System.out.printf(ResourceUtil.getText("success.alt"), attempts, computerDigit);
         scanner.close();
     }
 }
