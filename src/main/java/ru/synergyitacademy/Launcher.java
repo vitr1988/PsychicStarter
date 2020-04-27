@@ -26,10 +26,10 @@ public class Launcher {
      * Main method which starts this program
      * @param args      input parameters which can be defined in command line during running
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         System.out.println(ResourceUtil.getText("startTitle.alt"));
         int attempts = 1; // the first attempt
-        final int computerDigit = new Random().nextInt(MAX_BOUND + 1);
+        final int computerDigit = new Random().nextInt(MAX_BOUND) + 1;
         Scanner scanner = new Scanner(System.in);
         while(scanner.hasNext()) {
             // I should get the user number from console
